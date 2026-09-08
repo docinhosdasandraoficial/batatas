@@ -1,0 +1,1427 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta
+        name="description"
+        content="Recheio & Batata — Batata quentinha + recheio caprichado. Feita na hora, do jeitinho que você gosta."
+    >
+
+    <title>Recheio & Batata | SJC</title>
+
+    <style>
+
+        /* =========================================
+           GLOBAL RESET
+        ========================================= */
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #120d09;
+            color: #ffffff;
+            overflow-x: hidden;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        button {
+            font-family: inherit;
+        }
+
+
+        /* =========================================
+           COLOR VARIABLES
+        ========================================= */
+
+        :root {
+            --background: #120d09;
+            --secondary-background: #1d140e;
+            --card-background: #2a1b12;
+
+            --gold: #f2c14e;
+            --light-gold: #ffd866;
+
+            --white: #ffffff;
+            --muted: #c8beb7;
+
+            --red: #c9362f;
+            --whatsapp: #25d366;
+
+            --border: rgba(255, 255, 255, 0.08);
+
+            --radius: 22px;
+            --transition: 0.3s ease;
+        }
+
+
+        /* =========================================
+           DECORATIVE GLOW
+        ========================================= */
+
+        .glow {
+            position: absolute;
+
+            width: 300px;
+            height: 300px;
+
+            border-radius: 50%;
+
+            background: rgba(242, 193, 78, 0.08);
+
+            filter: blur(80px);
+
+            pointer-events: none;
+        }
+
+        .glow-top {
+            top: 100px;
+            right: -100px;
+        }
+
+        .glow-bottom {
+            bottom: 100px;
+            left: -150px;
+        }
+
+
+        /* =========================================
+           HEADER
+        ========================================= */
+
+        .site-header {
+            position: fixed;
+
+            top: 0;
+            left: 0;
+
+            width: 100%;
+
+            z-index: 1000;
+
+            background: rgba(18, 13, 9, 0.85);
+
+            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(15px);
+
+            border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .navigation {
+            width: min(1100px, 92%);
+
+            height: 74px;
+
+            margin: auto;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: space-between;
+        }
+
+
+        /* Logo */
+
+        .brand {
+            display: flex;
+
+            align-items: center;
+
+            gap: 9px;
+
+            font-size: 1.05rem;
+
+            font-weight: 800;
+        }
+
+        .brand-icon {
+            font-size: 1.5rem;
+
+            animation: potatoFloat 3s ease-in-out infinite;
+        }
+
+        .brand-highlight {
+            color: var(--gold);
+        }
+
+
+        /* Navigation links */
+
+        .navigation-actions {
+            display: flex;
+
+            align-items: center;
+
+            gap: 12px;
+        }
+
+        .instagram-link {
+            color: var(--muted);
+
+            font-size: 0.9rem;
+
+            transition: var(--transition);
+        }
+
+        .instagram-link:hover {
+            color: var(--gold);
+        }
+
+
+        /* Header WhatsApp */
+
+        .header-whatsapp {
+            width: 42px;
+            height: 42px;
+
+            border-radius: 50%;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            background: var(--whatsapp);
+
+            font-size: 1.2rem;
+
+            transition: var(--transition);
+        }
+
+        .header-whatsapp:hover {
+            transform: scale(1.08);
+        }
+
+
+        /* =========================================
+           HERO SECTION
+        ========================================= */
+
+        .hero-section {
+            position: relative;
+
+            min-height: 100vh;
+
+            display: flex;
+
+            align-items: center;
+
+            padding: 120px 20px 70px;
+
+            overflow: hidden;
+        }
+
+        .hero-container {
+            position: relative;
+
+            z-index: 2;
+
+            width: min(1100px, 92%);
+
+            margin: auto;
+        }
+
+
+        /* Location badge */
+
+        .location-badge {
+            display: inline-flex;
+
+            align-items: center;
+
+            gap: 7px;
+
+            padding: 8px 14px;
+
+            margin-bottom: 25px;
+
+            border: 1px solid rgba(242, 193, 78, 0.25);
+
+            border-radius: 100px;
+
+            background: rgba(242, 193, 78, 0.06);
+
+            color: var(--gold);
+
+            font-size: 0.85rem;
+        }
+
+
+        /* Hero title */
+
+        .hero-title {
+            max-width: 800px;
+
+            margin-bottom: 25px;
+
+            font-size: clamp(3rem, 10vw, 6.8rem);
+
+            line-height: 0.94;
+
+            letter-spacing: -5px;
+        }
+
+        .hero-title-highlight {
+            color: var(--gold);
+        }
+
+
+        /* Secondary slogan */
+
+        .hero-subtitle {
+            margin-bottom: 17px;
+
+            font-size: clamp(1.3rem, 3vw, 2rem);
+
+            font-weight: 700;
+        }
+
+
+        /* Main slogan */
+
+        .hero-description {
+            max-width: 700px;
+
+            margin-bottom: 32px;
+
+            color: var(--muted);
+
+            font-size: 1.05rem;
+
+            line-height: 1.7;
+        }
+
+
+        /* Hero buttons */
+
+        .hero-actions {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 14px;
+        }
+
+        .button {
+            display: inline-flex;
+
+            align-items: center;
+            justify-content: center;
+
+            gap: 9px;
+
+            padding: 15px 23px;
+
+            border-radius: 12px;
+
+            font-size: 0.95rem;
+
+            font-weight: 800;
+
+            transition: var(--transition);
+        }
+
+
+        /* Primary button */
+
+        .primary-button {
+            background: var(--gold);
+
+            color: #111111;
+
+            box-shadow:
+                0 10px 35px rgba(242, 193, 78, 0.15);
+        }
+
+        .primary-button:hover {
+            background: var(--light-gold);
+
+            transform: translateY(-3px);
+
+            box-shadow:
+                0 15px 45px rgba(242, 193, 78, 0.25);
+        }
+
+
+        /* Secondary button */
+
+        .secondary-button {
+            background: rgba(255, 255, 255, 0.04);
+
+            border: 1px solid rgba(255, 255, 255, 0.12);
+
+            color: var(--white);
+        }
+
+        .secondary-button:hover {
+            border-color: var(--gold);
+
+            color: var(--gold);
+
+            transform: translateY(-3px);
+        }
+
+
+        /* Decorative potato */
+
+        .hero-potato {
+            position: absolute;
+
+            right: 5%;
+            bottom: 8%;
+
+            font-size: clamp(7rem, 20vw, 17rem);
+
+            opacity: 0.12;
+
+            filter:
+                drop-shadow(
+                    0 0 30px rgba(242, 193, 78, 0.4)
+                );
+
+            animation: potatoFloat 4s ease-in-out infinite;
+        }
+
+
+        /* =========================================
+           GENERAL SECTIONS
+        ========================================= */
+
+        .content-section {
+            position: relative;
+
+            padding: 100px 20px;
+        }
+
+        .content-container {
+            width: min(1000px, 92%);
+
+            margin: auto;
+        }
+
+        .section-label {
+            margin-bottom: 13px;
+
+            color: var(--gold);
+
+            font-size: 0.75rem;
+
+            font-weight: 800;
+
+            letter-spacing: 2px;
+
+            text-transform: uppercase;
+        }
+
+        .section-title {
+            margin-bottom: 20px;
+
+            font-size: clamp(2rem, 6vw, 3.8rem);
+
+            line-height: 1;
+
+            letter-spacing: -2px;
+        }
+
+
+        /* =========================================
+           ABOUT SECTION
+        ========================================= */
+
+        .about-section {
+            background:
+                linear-gradient(
+                    180deg,
+                    var(--background),
+                    var(--secondary-background)
+                );
+        }
+
+        .about-grid {
+            display: grid;
+
+            grid-template-columns: 1fr;
+
+            gap: 25px;
+        }
+
+
+        /* About cards */
+
+        .about-card {
+            position: relative;
+
+            padding: 30px;
+
+            border-radius: var(--radius);
+
+            background: rgba(255, 255, 255, 0.035);
+
+            border: 1px solid var(--border);
+
+            overflow: hidden;
+
+            transition: var(--transition);
+        }
+
+        .about-card::before {
+            content: "";
+
+            position: absolute;
+
+            top: -30px;
+            right: -30px;
+
+            width: 100px;
+            height: 100px;
+
+            border-radius: 50%;
+
+            background: rgba(242, 193, 78, 0.08);
+        }
+
+        .about-card:hover {
+            transform: translateY(-5px);
+
+            border-color:
+                rgba(242, 193, 78, 0.25);
+        }
+
+        .card-icon {
+            margin-bottom: 20px;
+
+            font-size: 2rem;
+        }
+
+        .card-title {
+            margin-bottom: 10px;
+
+            font-size: 1.25rem;
+        }
+
+        .card-description {
+            color: var(--muted);
+
+            line-height: 1.7;
+        }
+
+
+        /* =========================================
+           CTA SECTION
+        ========================================= */
+
+        .cta-section {
+            text-align: center;
+
+            overflow: hidden;
+        }
+
+        .cta-box {
+            position: relative;
+
+            padding: 60px 25px;
+
+            border-radius: 30px;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #2b1c11,
+                    #17100c
+                );
+
+            border:
+                1px solid rgba(242, 193, 78, 0.14);
+
+            box-shadow:
+                0 25px 80px rgba(0, 0, 0, 0.25);
+        }
+
+        .cta-title {
+            margin-bottom: 15px;
+
+            font-size: clamp(2rem, 7vw, 4rem);
+
+            letter-spacing: -2px;
+        }
+
+        .cta-description {
+            margin-bottom: 28px;
+
+            color: var(--muted);
+        }
+
+
+        /* =========================================
+           TESTIMONIAL SECTION
+        ========================================= */
+
+        .testimonial-section {
+            background: #0f0a07;
+        }
+
+        .testimonial-card {
+            position: relative;
+
+            max-width: 760px;
+
+            margin: auto;
+
+            padding: 35px;
+
+            border-radius: var(--radius);
+
+            background:
+                linear-gradient(
+                    145deg,
+                    rgba(255, 255, 255, 0.06),
+                    rgba(255, 255, 255, 0.025)
+                );
+
+            border:
+                1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .quote-mark {
+            color: var(--gold);
+
+            font-size: 4rem;
+
+            line-height: 0.5;
+
+            opacity: 0.5;
+        }
+
+        .testimonial-text {
+            margin-top: 15px;
+
+            font-size: clamp(1.3rem, 4vw, 2rem);
+
+            line-height: 1.4;
+
+            font-weight: 700;
+        }
+
+        .testimonial-author {
+            margin-top: 20px;
+
+            color: var(--muted);
+
+            font-size: 0.9rem;
+        }
+
+
+        /* =========================================
+           FOOTER
+        ========================================= */
+
+        .site-footer {
+            padding: 55px 20px 30px;
+
+            background: #0a0705;
+
+            border-top:
+                1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .footer-container {
+            width: min(1000px, 92%);
+
+            margin: auto;
+
+            display: flex;
+
+            flex-direction: column;
+
+            gap: 30px;
+        }
+
+        .footer-brand {
+            font-size: 1.4rem;
+
+            font-weight: 800;
+        }
+
+        .footer-brand-highlight {
+            color: var(--gold);
+        }
+
+        .footer-message {
+            margin-top: 10px;
+
+            color: var(--muted);
+        }
+
+        .footer-links {
+            display: flex;
+
+            flex-wrap: wrap;
+
+            gap: 15px;
+        }
+
+        .footer-link {
+            padding: 11px 15px;
+
+            border:
+                1px solid rgba(255, 255, 255, 0.08);
+
+            border-radius: 10px;
+
+            color: var(--muted);
+
+            transition: var(--transition);
+        }
+
+        .footer-link:hover {
+            color: var(--gold);
+
+            border-color: var(--gold);
+        }
+
+        .copyright {
+            padding-top: 25px;
+
+            border-top:
+                1px solid rgba(255, 255, 255, 0.06);
+
+            color: #746b65;
+
+            font-size: 0.8rem;
+        }
+
+
+        /* =========================================
+           FLOATING WHATSAPP BUTTON
+        ========================================= */
+
+        .floating-whatsapp {
+            position: fixed;
+
+            right: 20px;
+            bottom: 20px;
+
+            width: 58px;
+            height: 58px;
+
+            z-index: 999;
+
+            display: flex;
+
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background: var(--whatsapp);
+
+            color: #ffffff;
+
+            font-size: 1.7rem;
+
+            box-shadow:
+                0 10px 30px rgba(0, 0, 0, 0.35);
+
+            animation: whatsappPulse 2.5s infinite;
+
+            transition: var(--transition);
+        }
+
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+
+
+        /* =========================================
+           SCROLL ANIMATION
+        ========================================= */
+
+        .scroll-animation {
+            opacity: 0;
+
+            transform: translateY(25px);
+
+            transition:
+                opacity 0.7s ease,
+                transform 0.7s ease;
+        }
+
+        .scroll-animation.visible {
+            opacity: 1;
+
+            transform: translateY(0);
+        }
+
+
+        /* =========================================
+           KEYFRAME ANIMATIONS
+        ========================================= */
+
+        @keyframes potatoFloat {
+
+            0%,
+            100% {
+                transform:
+                    translateY(0)
+                    rotate(0deg);
+            }
+
+            50% {
+                transform:
+                    translateY(-12px)
+                    rotate(2deg);
+            }
+        }
+
+
+        @keyframes whatsappPulse {
+
+            0% {
+                box-shadow:
+                    0 0 0 0
+                    rgba(37, 211, 102, 0.4);
+            }
+
+            70% {
+                box-shadow:
+                    0 0 0 15px
+                    rgba(37, 211, 102, 0);
+            }
+
+            100% {
+                box-shadow:
+                    0 0 0 0
+                    rgba(37, 211, 102, 0);
+            }
+        }
+
+
+        /* =========================================
+           TABLET / DESKTOP
+        ========================================= */
+
+        @media (min-width: 700px) {
+
+            .about-grid {
+                grid-template-columns:
+                    repeat(3, 1fr);
+            }
+
+            .footer-container {
+                display: grid;
+
+                grid-template-columns:
+                    1fr auto;
+
+                align-items: center;
+            }
+
+            .copyright {
+                grid-column: 1 / -1;
+            }
+        }
+
+
+        /* =========================================
+           SMALL MOBILE DEVICES
+        ========================================= */
+
+        @media (max-width: 500px) {
+
+            .instagram-link {
+                display: none;
+            }
+
+            .hero-section {
+                padding-top: 120px;
+            }
+
+            .hero-title {
+                letter-spacing: -3px;
+            }
+
+            .hero-actions {
+                flex-direction: column;
+            }
+
+            .button {
+                width: 100%;
+            }
+
+            .hero-potato {
+                right: -30px;
+
+                bottom: 40px;
+
+                font-size: 8rem;
+            }
+
+            .content-section {
+                padding: 75px 20px;
+            }
+
+            .testimonial-card {
+                padding: 27px;
+            }
+        }
+
+    </style>
+</head>
+
+
+<body>
+
+
+    <!-- =========================================
+         HEADER
+    ========================================== -->
+
+    <header class="site-header">
+
+        <nav class="navigation">
+
+            <a href="#home" class="brand">
+
+                <span class="brand-icon">🥔</span>
+
+                Recheio
+                <span class="brand-highlight">&</span>
+                Batata
+
+            </a>
+
+
+            <div class="navigation-actions">
+
+                <a
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="instagram-link"
+                >
+                    @recheio_e_batata_sjc
+                </a>
+
+
+                <a
+                    href="https://wa.me/5512978140124"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="header-whatsapp"
+                    aria-label="Falar pelo WhatsApp"
+                >
+                    💬
+                </a>
+
+            </div>
+
+        </nav>
+
+    </header>
+
+
+    <!-- =========================================
+         MAIN CONTENT
+    ========================================== -->
+
+    <main>
+
+
+        <!-- =====================================
+             HERO
+        ====================================== -->
+
+        <section
+            class="hero-section"
+            id="home"
+        >
+
+            <div class="glow glow-top"></div>
+
+            <div class="glow glow-bottom"></div>
+
+
+            <div class="hero-container">
+
+                <div class="location-badge scroll-animation">
+                    📍 São José dos Campos - SP
+                </div>
+
+
+                <h1 class="hero-title scroll-animation">
+
+                    Não é só<br>
+
+                    <span class="hero-title-highlight">
+                        batata recheada...
+                    </span>
+
+                </h1>
+
+
+                <p class="hero-subtitle scroll-animation">
+                    🥔 Não é só batata recheada...
+                </p>
+
+
+                <p class="hero-description scroll-animation">
+
+                    Batata quentinha + recheio caprichado ✨
+                    Feita na hora, do jeitinho que você gosta ❤️
+                    Muito sabor em cada mordida!
+
+                </p>
+
+
+                <div class="hero-actions scroll-animation">
+
+
+                    <a
+                        href="https://jucatalogos.com.br"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="button primary-button"
+                    >
+                        🥔 Menu Completo / Fazer Pedido
+                    </a>
+
+
+                    <a
+                        href="https://instagram.com"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="button secondary-button"
+                    >
+                        📸 Instagram
+                    </a>
+
+                </div>
+
+            </div>
+
+
+            <div class="hero-potato">
+                🥔
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             ABOUT / DIFFERENTIAL
+        ====================================== -->
+
+        <section
+            class="content-section about-section"
+            id="about"
+        >
+
+            <div class="content-container">
+
+
+                <div class="section-label scroll-animation">
+                    O nosso diferencial
+                </div>
+
+
+                <h2 class="section-title scroll-animation">
+
+                    Feita na hora.<br>
+                    Do seu jeito. ❤️
+
+                </h2>
+
+
+                <div class="about-grid">
+
+
+                    <article class="about-card scroll-animation">
+
+                        <div class="card-icon">
+                            🔥
+                        </div>
+
+                        <h3 class="card-title">
+                            Feita na hora
+                        </h3>
+
+                        <p class="card-description">
+
+                            Batata quentinha e preparada na hora
+                            para deixar cada mordida ainda mais
+                            especial.
+
+                        </p>
+
+                    </article>
+
+
+                    <article class="about-card scroll-animation">
+
+                        <div class="card-icon">
+                            🥔
+                        </div>
+
+                        <h3 class="card-title">
+                            Recheio caprichado
+                        </h3>
+
+                        <p class="card-description">
+
+                            Muito sabor em cada mordida, com
+                            recheio caprichado para deixar sua
+                            experiência ainda melhor.
+
+                        </p>
+
+                    </article>
+
+
+                    <article class="about-card scroll-animation">
+
+                        <div class="card-icon">
+                            ✨
+                        </div>
+
+                        <h3 class="card-title">
+                            Do seu jeitinho
+                        </h3>
+
+                        <p class="card-description">
+
+                            Você escolhe como quer sua batata,
+                            tornando cada pedido uma experiência
+                            do seu jeito.
+
+                        </p>
+
+                    </article>
+
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             CALL TO ACTION
+        ====================================== -->
+
+        <section class="content-section cta-section">
+
+            <div class="content-container">
+
+                <div class="cta-box scroll-animation">
+
+                    <div class="glow glow-top"></div>
+
+
+                    <h2 class="cta-title">
+                        Deu vontade? 🥔
+                    </h2>
+
+
+                    <p class="cta-description">
+                        Confira o menu completo e faça seu pedido.
+                    </p>
+
+
+                    <a
+                        href="https://jucatalogos.com.br"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="button primary-button"
+                    >
+                        🔥 Menu Completo / Fazer Pedido
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             TESTIMONIAL
+        ====================================== -->
+
+        <section
+            class="content-section testimonial-section"
+            id="testimonial"
+        >
+
+            <div class="content-container">
+
+
+                <div class="section-label scroll-animation">
+                    Quem experimentou, aprovou
+                </div>
+
+
+                <h2 class="section-title scroll-animation">
+
+                    Uma mordida<br>
+                    vale por mil palavras. ✨
+
+                </h2>
+
+
+                <div class="testimonial-card scroll-animation">
+
+                    <div class="quote-mark">
+                        “
+                    </div>
+
+
+                    <p class="testimonial-text">
+
+                        "Tava maravilhoso, com certeza vou pedir
+                        mais vezes 🙌🏼"
+
+                    </p>
+
+
+                    <p class="testimonial-author">
+
+                        ❤️ Cliente Recheio & Batata
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- =====================================
+             FINAL CTA
+        ====================================== -->
+
+        <section class="content-section cta-section">
+
+            <div class="content-container">
+
+                <div class="cta-box scroll-animation">
+
+
+                    <h2 class="cta-title">
+
+                        Muito sabor<br>
+                        em cada mordida! ❤️
+
+                    </h2>
+
+
+                    <p class="cta-description">
+
+                        Não é só batata recheada...
+
+                    </p>
+
+
+                    <a
+                        href="https://jucatalogos.com.br"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        class="button primary-button"
+                    >
+                        🥔 Fazer Pedido
+                    </a>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+    </main>
+
+
+    <!-- =========================================
+         FOOTER
+    ========================================== -->
+
+    <footer class="site-footer">
+
+        <div class="footer-container">
+
+
+            <div>
+
+                <div class="footer-brand">
+
+                    🥔 Recheio
+                    <span class="footer-brand-highlight">
+                        &
+                    </span>
+                    Batata
+
+                </div>
+
+
+                <p class="footer-message">
+
+                    Sua satisfação nos motiva a continuar! ♡
+
+                </p>
+
+
+                <p class="footer-message">
+
+                    📍 São José dos Campos - SP
+
+                </p>
+
+            </div>
+
+
+            <div class="footer-links">
+
+
+                <a
+                    href="https://jucatalogos.com.br"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer-link"
+                >
+                    🥔 Cardápio
+                </a>
+
+
+                <a
+                    href="https://instagram.com"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer-link"
+                >
+                    📸 Instagram
+                </a>
+
+
+                <a
+                    href="https://wa.me/5512978140124"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="footer-link"
+                >
+                    💬 WhatsApp
+                </a>
+
+            </div>
+
+
+            <div class="copyright">
+
+                © 2026 Recheio & Batata — São José dos Campos - SP
+
+            </div>
+
+
+        </div>
+
+    </footer>
+
+
+    <!-- =========================================
+         FLOATING WHATSAPP
+    ========================================== -->
+
+    <a
+        href="https://wa.me/5512978140124"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="floating-whatsapp"
+        aria-label="Falar com Recheio & Batata pelo WhatsApp"
+    >
+        💬
+    </a>
+
+
+    <!-- =========================================
+         JAVASCRIPT
+    ========================================== -->
+
+    <script>
+
+        /*
+         * Detect elements when they enter
+         * the visible area of the screen.
+         */
+
+        const animatedElements =
+            document.querySelectorAll(".scroll-animation");
+
+
+        /*
+         * Create an Intersection Observer
+         * for smooth scroll animations.
+         */
+
+        const animationObserver =
+            new IntersectionObserver(
+
+                (entries) => {
+
+                    entries.forEach((entry) => {
+
+                        if (entry.isIntersecting) {
+
+                            entry.target.classList.add("visible");
+
+                            animationObserver.unobserve(
+                                entry.target
+                            );
+
+                        }
+
+                    });
+
+                },
+
+                {
+                    threshold: 0.12
+                }
+
+            );
+
+
+        /*
+         * Start observing every animated element.
+         */
+
+        animatedElements.forEach((element) => {
+
+            animationObserver.observe(element);
+
+        });
+
+    </script>
+
+
+</body>
+
+</html>
+```
